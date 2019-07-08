@@ -4,3 +4,11 @@
   // ベンダープレフィックス確認用に適当に入れただけ
   transform: scale(2);
 }
+
+// Sassから画像を読み込む
+.sass-img {
+  height: 400px;
+  padding: 0;
+  margin: 0;
+  background: url("./assets/img/vue.png") no-repeat;
+}

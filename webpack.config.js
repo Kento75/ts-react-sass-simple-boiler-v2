@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require ('path');
 const rules = [
   /* TypeScript用の設定 */
   {
@@ -15,29 +15,37 @@ const rules = [
     test: /\.scss$/,
     use: [
       // linkタグへの出力用
-      "style-loader",
+      'style-loader',
       // CSSのバンドル設定
       {
-        loader: "css-loader",
+        loader: 'css-loader',
         options: {
-          url: false,
+          // css内のurl()メソッドを取り込む設定
+          url: true,
           // // ソースマップの有効化 development と production で勝手に切り替わるのでコメントアウト
           // sourceMap: true,
 
           // sass-loader と postcss-loader を使用するので 2 を設定
           // ここを参考に設定 https://github.com/webpack-contrib/css-loader#importloaders
           importLoaders: 2,
-        }
+        },
       },
-      "postcss-loader",
+      'postcss-loader',
       {
-        loader: "sass-loader",
+        loader: 'sass-loader',
         // options: {
         // // ソースマップの有効化 development と production で勝手に切り替わるのでコメントアウト
         //   sourceMap: true,
         // }
-      }
-    ]
+      },
+    ],
+  },
+  /* 画像ファイル用設定 */
+  {
+    // 対象となるファイルの拡張子を設定
+    test: /\.(gif|png|jpg|jpeg|svg|ttf|eot|wof|woff|woff2)$/,
+    // 画像をBase64で取り込み
+    loader: 'url-loader',
   },
 ];
 
@@ -52,7 +60,7 @@ module.exports = {
   // ビルド後の出力先設定
   output: {
     // 出力先パス
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve (__dirname, 'build'),
     // ファイル名
     filename: 'bundle.js',
   },

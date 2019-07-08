@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './scss-style.scss';
 
+// import でもできるが面倒なので、妥協して require を使用
+const reactImg = require('./assets/img/react.png');
+
 function App(): JSX.Element {
   const sum = (a: number, b: number): number => a + b;
 
@@ -12,6 +15,10 @@ function App(): JSX.Element {
         <p>Test: {sum(15, 15)} </p>
       </div>
       <div className="scss-style" />
+      <div className="sass-img" />
+      <div>
+        <img src={reactImg} alt="react" />
+      </div>
     </React.Fragment>
   );
 }
